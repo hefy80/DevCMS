@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- container-fluid -->
+	<head>
+		{:W('Link',array(),false)}
+	</head>
+	<body>
+		{:W('Head',array(),false)}
+		{:W('SideBar',array(),false)}
+		<div id="content">
+			<div class="container-fluid">
+				<div class="row-fluid" style="margin-top:15px">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<ul class="breadcrumb">
+									<li><a href="__ACTION__/">万步健康科技</a></li>
+									<volist name="DeptPath" id="vo">
+										<li <if condition="$dept eq $vo[id]">class="active"</if>>
+											<span class="divider">/</span>
+											<a href="__ACTION__/dept/{$vo[id]}">{$vo[name]}</a> 
+										</li>
+									</volist>
+								</ul>
+							</div>
+							<if condition="$DeptNum gt 0">
+								<div class="span12 center" style="text-align: center;">
+									<ul class="quick-actions-horizontal">
+										<volist name="Depts" id="vo">
+										<li>
+											<a href="__ACTION__/dept/{$vo[id]}">
+												<i class="icon-people"></i>
+												<span>{$vo[name]}</span>
+											</a>
+										</li>
+										</volist>
+									</ul>
+								</div>
+							</if>
+							<div class="widget-content nopadding">
+								<table class="table table-bordered data-table">
+									<thead>
+										<tr>
+										<th>姓名（账号）</th>
+										<th>手机号码</th>
+										<th>分机号码</th>
+										<th>部门</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="Users" id="vo">
+											<tr class="gradeA">
+												<td>{$vo['realname']}({$vo['account']})</td>
+												<td>{$vo['mobile']}</td>
+												<td>{$vo['phone']}</td>
+												<td class="center">{$vo['deptname']}</td>
+											</tr>
+										</volist>
+									</tbody>
+								</table>  
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					{:W('Foot',array(),false)}
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Tpl/js/jquery.min.js"></script>
+		<script src="__PUBLIC__/Tpl/js/jquery.ui.custom.js"></script>
+		<script src="__PUBLIC__/Tpl/js/jquery.uniform.js"></script>
+		<script src="__PUBLIC__/Tpl/js/select2.min.js"></script>
+		<script src="__PUBLIC__/Tpl/js/bootstrap.min.js"></script>
+        <script src="__PUBLIC__/Tpl/js/jquery.dataTables.min.js"></script>
+		<script src="__PUBLIC__/Tpl/js/unicorn.js"></script>
+        <script src="__PUBLIC__/Tpl/js/unicorn.tables.js"></script>
+		<script src="__PUBLIC__/Tpl/js/jquery.qtip-1.0.0-rc3.min.js"></script>
+	</body>
+</html>

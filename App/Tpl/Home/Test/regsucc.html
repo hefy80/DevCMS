@@ -1,0 +1,46 @@
+<!DOCTYPE HTML> 
+<html lang="en"> 
+<head> 
+	<title>注册绑定成功</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport"content="width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<link rel="stylesheet" href="__PUBLIC__/Tpl/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Tpl/css/bootstrap-responsive.min.css" />
+	<script src="http://www.wanbu.com.cn/NewWanbu/App/Public/Tpl/js/jquery-1.4.1.min.js"></script>
+</head> 
+<body> 
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<legend>注册<notempty name="SN">&绑定</notempty>成功</legend>
+			<div class="control-group">
+				<notempty name="SN">
+				<p>设备号：{$REG['sn']}</p>
+				</notempty>
+				<p>用户名：{$REG['username']}</p>
+			</div>
+			<div class="control-group">
+				<a href="http://www.wanbu.com.cn/helpcenter.php?ac=client" class="btn btn-primary btn-block btn-large">下载手机客户端</a>
+				<!--input type="button" id="btVerify" value="获取验证码"/-->
+			</div>
+			<div class="control-group" id="div_followwx">
+				<a href="http://mp.weixin.qq.com/s?__biz=MjM5NzA0MTU3Mg==&mid=200221214&idx=1&sn=7126446584e88e52fc9223373528eec9#rd" class="btn btn-primary btn-block btn-large">关注微信公众号</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		window.onload = function(){ 
+			if(!isWeiXin()){ 
+				$('#div_followwx').hide();
+			}
+		} 
+		function isWeiXin(){ 
+			var ua = window.navigator.userAgent.toLowerCase(); 
+			if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+				return true; 
+			}else{ 
+				return false; 
+			} 
+		} 
+	</script>
+</body> 
+</html> 

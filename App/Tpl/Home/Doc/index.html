@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- container-fluid -->
+	<head>
+		{:W('Link',array(),false)}
+	</head>
+	<body>
+		{:W('Head',array(),false)}
+		{:W('SideBar',array(),false)}
+		<div id="content">
+			<div id="content-header">
+				<h1>文档</h1>
+			</div>
+			<div id="breadcrumb">
+				<a href="#" title="配置管理" class="tip-bottom"><i class="icon-home"></i> 配置管理</a>
+				<?php
+					foreach ($node['forefather'] as $k=>$v)
+					{
+						$path=urlencode(base64_encode($v['path']));
+						echo "<a href=\"__APP__/Doc/index?path=".$path."\" class=\"current\">".$v['name']."</a>";
+					}
+				?>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-content">
+								<ul class="thumbnails">
+									<?php
+										foreach ($node['children'] as $k=>$v)
+										{
+											$path=urlencode(base64_encode($v['path']));
+											echo "<li class=\"span2\"><a href=\"__APP__/Doc/index?path=".$path."\"><strong>".$k."</strong>";
+											
+											if ($v['type']=="dir")
+											{
+												echo "<small>".count($v['children'])."</small>";
+											}
+											echo "</a></li>";
+										}
+									?>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					{:W('Foot',array(),false)}
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Tpl/js/jquery.min.js"></script>
+		<script src="__PUBLIC__/Tpl/js/jquery.ui.custom.js"></script>
+		<script src="__PUBLIC__/Tpl/js/jquery.gritter.min.js"></script>
+		<script src="__PUBLIC__/Tpl/js/jquery.peity.min.js"></script>
+		<script src="__PUBLIC__/Tpl/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/Tpl/js/unicorn.js"></script>
+		<script src="__PUBLIC__/Tpl/js/unicorn.interface.js"></script>
+		<script src="__PUBLIC__/Tpl/js/jquery.qtip-1.0.0-rc3.min.js"></script>
+	</body>
+</html>

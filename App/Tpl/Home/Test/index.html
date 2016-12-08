@@ -1,0 +1,53 @@
+<!DOCTYPE HTML> 
+<html lang="en"> 
+<head> 
+	<title>万步网</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport"content="width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<link rel="stylesheet" href="__PUBLIC__/Tpl/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Tpl/css/bootstrap-responsive.min.css" />
+	<script src="http://www.wanbu.com.cn/NewWanbu/App/Public/Tpl/js/jquery-1.4.1.min.js"></script>
+</head> 
+<body> 
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<legend>万步网</legend>
+			<div class="control-group">
+				<a href="http://try.heyu.com/index.php/Test/register" class="btn btn-primary btn-block btn-large">注册会员</a>
+				<!--input type="button" id="btVerify" value="获取验证码"/-->
+			</div>
+			<div class="control-group">
+				<a href="http://www.wanbu.com.cn/helpcenter.php?ac=client" class="btn btn-primary btn-block btn-large">下载手机客户端</a>
+				<!--input type="button" id="btVerify" value="获取验证码"/-->
+			</div>
+			<div class="control-group" id="div_followwx">
+				<a href="http://weixin.qq.com/r/V3W-p1bEmwvkrRLE9yBF" class="btn btn-primary btn-block btn-large">一键关注梧州吃喝玩乐</a>
+				<a href="http://mp.weixin.qq.com/s?__biz=MjM5NzA0MTU3Mg==&mid=200221214&idx=1&sn=7126446584e88e52fc9223373528eec9#rd" class="btn btn-primary btn-block btn-large">关注微信公众号</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		window.onload = function(){ 
+			if(!isIOS()){ 
+				$('#div_followwx').hide();
+			}
+		} 
+		function isWeiXin(){ 
+			var ua = window.navigator.userAgent.toLowerCase(); 
+			if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+				return true; 
+			}else{ 
+				return false; 
+			} 
+		} 
+		function isIOS(){ 
+			var ua = window.navigator.userAgent.toLowerCase(); 
+			if(ua.match(/iPad/i) == 'ipad' || ua.match(/iPhone/i) == 'iphone'){ 
+				return true; 
+			}else{ 
+				return false; 
+			} 
+		} 
+	</script>
+</body>
+</html>

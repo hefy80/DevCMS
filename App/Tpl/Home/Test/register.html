@@ -1,0 +1,85 @@
+<!DOCTYPE HTML> 
+<html lang="en"> 
+<head> 
+	<title>万步网注册绑定页</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport"content="width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<link rel="stylesheet" href="__PUBLIC__/Tpl/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Tpl/css/bootstrap-responsive.min.css" />
+</head> 
+<body> 
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<form class="form-horizontal" name="register" action="http://try.heyu.com/index.php/Test/regsucc" method="post">
+				<legend>注册<notempty name="SN">&绑定</notempty></legend>
+				<notempty name="SN">
+				<div class="control-group">
+					<span class="uneditable-input input-block-level">{$SN}</span>
+					<input id="sn" name="sn" class="uneditable-input input-block-level" value="{$SN}" type="hidden"/>
+				</div>
+				</notempty>
+				<div class="control-group">
+					<input id="username" class="input-block-level" type="text" name="username" placeholder="请输入用户名"/>
+				</div>
+				<div class="control-group">
+					<input id="mobile" class="input-block-level" type="tel" name="mobile" placeholder="请输入手机号"/>
+				</div>
+				<div class="control-group">
+					<button type="button" class="btn btn-primary btn-block btn-large" id="btVerify">获取验证码</button>
+					<!--input type="button" id="btVerify" value="获取验证码"/-->
+				</div>
+				<div class="control-group" id="inputVerify">
+					<input id="verifycode" class="input-block-level" type="text" name="verifycode" placeholder="请输入验证码"/>
+				</div>
+				<div class="control-group" id="btRegister">
+					<button type="submit" class="btn btn-primary btn-block btn-large">提交注册</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		var wait=60;
+		function time(o) 
+		{
+			if (wait == 0) 
+			{
+				o.removeAttribute("disabled");
+				o.innerHTML="获取验证码";
+				wait = 60;
+			} else 
+			{
+				o.setAttribute("disabled", true);
+				o.innerHTML=""+wait+"秒后重新获取";
+				wait--;
+				setTimeout(function() 
+				{
+					time(o)
+				},
+				1000)
+			}
+		}
+		window.onload = function()
+		{
+			document.getElementById("inputVerify").setAttribute("hidden",true);
+			document.getElementById("btRegister").setAttribute("hidden",true);
+		}
+		document.getElementById("btVerify").onclick=function()
+		{
+			if(document.getElementById('username').value==''){
+				alert('请输入账号')
+				document.getElementById('username').focus();
+				return false;
+			}
+			if(document.getElementById('mobile').value=='' ){
+				alert('请输入手机号');
+				document.getElementById('mobile').focus();
+				return false;
+			}
+			document.getElementById("inputVerify").removeAttribute("hidden");
+			document.getElementById("btRegister").removeAttribute("hidden");
+			time(this);
+			removeAttribute("disabled");
+		};
+	</script>
+</body> 
+</html> 
